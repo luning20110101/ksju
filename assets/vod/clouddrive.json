@@ -1,0 +1,20 @@
+[
+ {
+    "api": "/api/sources/aipan-search"
+  },
+  {
+    "api": "/api/sources/x"
+  },
+  {
+    "api": "/api/sources/xx"
+  },
+    {
+    "api": "/api/sources/indexI"
+  },
+  {
+    "api": "/api/sources/xxx"
+  },
+  {
+    "api": "/api/sources/xxxx"
+  }
+]
