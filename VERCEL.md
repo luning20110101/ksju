@@ -195,3 +195,18 @@ JWT_SECRET="your_jwt_secret"
 - 数据库日志
 - 项目 GitHub Issues
 - Vercel 文档中心
+
+
+部署
+   ```bash
+   # 生成 Prisma 客户端
+   npx prisma generate
+   
+   # 执行数据库迁移
+   npx prisma migrate deploy
+   ```
+
+5. 构建项目：
+   ```bash
+   npm run build
+   ```

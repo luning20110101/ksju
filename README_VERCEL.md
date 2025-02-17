@@ -1,6 +1,6 @@
-# 搜据屋-网盘资源搜索Web
-搜据屋-网盘资源搜索：是一个免费开源项目!
-👉 [搜据屋-网盘资源搜索](https://so.aicompasspro.com)
+# 快搜剧-网盘资源搜索Web
+快搜剧-网盘资源搜索：是一个免费开源项目!
+👉 [快搜剧-网盘资源搜索](https://so.aicompasspro.com)
 
 ### 更新
 - 增加后台管理, 访问路径：/login | /admin/dashboard | /admin/clouddrive

@@ -60,10 +60,10 @@ onMounted(async () => {
           <h1
             class="text-4xl text-gray-800 font-bold dark:text-white bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
           >
-            SJ5.XYZ
+            KSJU.XYZ
           </h1>
           <p class="text-gray-600 text-sm dark:text-gray-300 mt-2">
-            搜剧屋 - 你的一站式搜剧神器
+            快搜剧 - 你的一站式搜剧神器
           </p>
         </div>
       </div>
@@ -92,6 +92,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
+    <!--
     <div class="flex items-center justify-center pt-8">
       <nuxt-link
         to="/music/player"
@@ -104,6 +105,7 @@ onMounted(async () => {
         ></i>
       </nuxt-link>
     </div>
+    -->
     <DoubanImageBox
       :doubanData="doubanData"
       @goDouban="goDouban"

@@ -1,0 +1,23 @@
+ADMIN_USER="lcwlit"
+ADMIN_PASSWORD="lcwlzxcvbnm"
+ADMIN_EMAIL="admin@lcwlit.com"
+JWT_SECRET="lcwlit"
+#DATABASE_URL="postgresql://aipan:xKkrAZdwfajm@127.0.0.1:5432/aipan"
+DATABASE_URL="postgresql://neondb_owner:npg_PpyQ5t8fAUzT@ep-cold-glitter-a5163oz7-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
+
+# DATABASE_URL="postgresql://aipan:xKkrAZdwfajm@127.0.0.1:5432/aipan"
+# SHADOW_DATABASE_URL="postgresql://aipan:xKkrAZdwfajm@127.0.0.1:5432/aipan"
+
+DATABASE_SCHEMA="public"
+# 复制到服务器上的 .env 文件 然后执行docker compose 命令
+
+# pan.lcwlit.com
+# GitHub 配置
+# GitHub 用户名
+NUXT_PUBLIC_GITHUB_OWNER=
+# 用于存储图片的仓库名称
+NUXT_PUBLIC_GITHUB_REPO=
+# GitHub Personal Access Token
+NUXT_PUBLIC_GITHUB_TOKEN=ghp_  # 替换为新生成的 token
+# 默认分支名称
+NUXT_PUBLIC_GITHUB_BRANCH=

@@ -2,7 +2,7 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/unilei/aipan-netdisk-search.git&project-name=aipan-netdisk-search&repository-name=aipan-netdisk-search)
 
-🔥 爱盘-网盘资源搜索是一个开源的网盘资源聚合搜索平台。
+🔥 快搜剧-网盘资源搜索是一个开源的网盘资源聚合搜索平台。
 
 ## 功能特点
 

@@ -4,8 +4,8 @@ useHead({
     meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'keywords', content: 'sj5.xyz,TVbox,数据源,接口地址,猫影视TV,电视盒子接口,数据源接口,免费数据源' },
-        { hid: 'description', name: 'description', content: 'sj5.xyz是全网最全免费数据源,TVbox系列数据源接口地址,TVbox影视仓电视盒子接口,猫影视TV数据源接口' },
+        { name: 'keywords', content: 'ksju.xyz,TVbox,数据源,接口地址,猫影视TV,电视盒子接口,数据源接口,免费数据源' },
+        { hid: 'description', name: 'description', content: 'ksju.xyz是全网最全免费数据源,TVbox系列数据源接口地址,TVbox影视仓电视盒子接口,猫影视TV数据源接口' },
         { name: 'format-detection', content: 'telephone=no' }
     ]
 })
@@ -81,9 +81,9 @@ const copy = async (text) => {
             <div class="mb-8 space-y-4">
                 <div class="max-w-md mx-auto">
                     <div class="relative">
-                        <input type="text" 
+                        <input type="text"
                                v-model="searchQuery"
-                               placeholder="搜索数据源..." 
+                               placeholder="搜索数据源..."
                                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         >
                         <span class="absolute right-3 top-2.5 text-gray-400">
@@ -91,15 +91,15 @@ const copy = async (text) => {
                         </span>
                     </div>
                 </div>
-                
+
                 <div class="flex flex-wrap justify-center gap-2">
-                    <button v-for="category in categories" 
+                    <button v-for="category in categories"
                             :key="category"
                             @click="activeCategory = category"
                             :class="[
                                 'px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200',
-                                activeCategory === category 
-                                    ? 'bg-blue-500 text-white' 
+                                activeCategory === category
+                                    ? 'bg-blue-500 text-white'
                                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                             ]"
                     >
@@ -114,13 +114,13 @@ const copy = async (text) => {
                     <p class="text-gray-500">正在加载数据源...</p>
                 </div>
             </div>
-            
+
             <div v-else-if="filteredTvbox.length === 0" class="text-center py-12">
                 <p class="text-gray-500">未找到匹配的数据源</p>
             </div>
 
             <div v-else class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <div v-for="(item, index) in filteredTvbox" 
+                <div v-for="(item, index) in filteredTvbox"
                      :key="index"
                      class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden"
                 >
@@ -131,10 +131,10 @@ const copy = async (text) => {
                                 {{ item.category || '未分类' }}
                             </span>
                         </div>
-                        
+
                         <div class="flex items-center gap-2">
-                            <input type="text" 
-                                   :value="item.link" 
+                            <input type="text"
+                                   :value="item.link"
                                    readonly
                                    class="flex-1 px-3 py-2 text-sm bg-gray-50 rounded border border-gray-200 focus:outline-none"
                             >

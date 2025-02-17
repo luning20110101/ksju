@@ -30,7 +30,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: {
-      title: "搜剧屋 - 你的一站式追剧神器",
+      title: "快搜剧 - 你的一站式追剧神器",
       link: [
         {
           rel: "stylesheet",
@@ -43,37 +43,37 @@ export default defineNuxtConfig({
         {
           name: "keywords",
           content:
-            "搜剧屋,免费资源搜索,网盘搜索,影视资源,百度网盘,夸克网盘,迅雷网盘",
+            "快搜剧,免费资源搜索,网盘搜索,影视资源,百度网盘,夸克网盘,迅雷网盘",
         },
         {
           hid: "description",
           name: "description",
           content:
-            "搜据屋(sj5.xyz)你的一站式搜据神器，提供网盘资源搜索、影视在线观看等多种功能，让你找剧更方便！",
+            "搜据屋(ksju.xyz)你的一站式搜据神器，提供网盘资源搜索、影视在线观看等多种功能，让你找剧更方便！",
         },
         { name: "format-detection", content: "telephone=no" },
         {
           property: "og:title",
-          content: "搜剧屋 - 你的一站式追剧神器",
+          content: "快搜剧 - 你的一站式追剧神器",
         },
         {
           property: "og:description",
           content:
-            "搜据屋(sj5.xyz)你的一站式搜据神器，提供网盘资源搜索、影视在线观看等多种功能，让你找剧更方便！",
+            "搜据屋(ksju.xyz)你的一站式搜据神器，提供网盘资源搜索、影视在线观看等多种功能，让你找剧更方便！",
         },
-        { property: "og:image", content: "https://www.sj5.xyz/logo.png" },
-        { property: "og:url", content: "https://www.sj5.xyz" },
+        { property: "og:image", content: "https://www.ksju.xyz/logo.png" },
+        { property: "og:url", content: "https://www.ksju.xyz" },
         { name: "twitter:card", content: "summary_large_image" },
         {
           name: "twitter:title",
-          content: "搜剧屋 - 你的一站式追剧神器",
+          content: "快搜剧 - 你的一站式追剧神器",
         },
         {
           name: "twitter:description",
           content:
-            "搜据屋(sj5.xyz)你的一站式搜据神器，提供网盘资源搜索、影视在线观看等多种功能，让你找剧更方便！",
+            "搜据屋(ksju.xyz)你的一站式搜据神器，提供网盘资源搜索、影视在线观看等多种功能，让你找剧更方便！",
         },
-        { name: "twitter:image", content: "https://sj5.xyz/logo.png" },
+        { name: "twitter:image", content: "https://ksju.xyz/logo.png" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         // 统一 referrer 策略
         { name: "referrer", content: "strict-origin-when-cross-origin" },
@@ -221,9 +221,9 @@ export default defineNuxtConfig({
   },
   site: {
     name: "搜据屋 - 你的一站式搜据神器",
-    url: "https://www.sj5.xyz",
+    url: "https://www.ksju.xyz",
     description:
-      "搜据屋(sj5.xyz)你的一站式搜据神器，提供网盘资源搜索、影视在线观看等多种功能，让你找剧更方便！",
+      "搜据屋(ksju.xyz)你的一站式搜据神器，提供网盘资源搜索、影视在线观看等多种功能，让你找剧更方便！",
   },
   compatibilityDate: "2024-09-12",
 });

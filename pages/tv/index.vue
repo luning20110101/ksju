@@ -12,7 +12,7 @@ useHead({
         { property: 'og:title', content: '搜据屋 - 电视直播与 Alist 数据源聚合播放' },
         { property: 'og:description', content: '搜据屋提供最新的电视直播和 Alist 数据源聚合播放，轻松享受精彩内容！' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: "https://sj5.xyz/tv" }, // 动态获取当前页面的 URL
+        { property: 'og:url', content: "https://ksju.xyz/tv" }, // 动态获取当前页面的 URL
         { property: 'og:image', content: '/logo.png' }, // 替换为适当的缩略图链接
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: '搜据屋 - 电视直播与 Alist 数据源聚合播放' },
@@ -503,16 +503,16 @@ const scale = ref(1);
 // 计算缩放比例
 const calculateScale = () => {
     if (!tvContainer.value) return;
-    
+
     // 获取容器的实际高度（不包括缩放）
     const containerHeight = tvContainer.value.scrollHeight;
     // 获取视窗高度
     const viewportHeight = window.innerHeight;
-    
+
     // 计算需要的缩放比例，留出一些边距
     const padding = 32; // 上下各留 16px 的边距
     const newScale = (viewportHeight - padding) / containerHeight;
-    
+
     // 限制最大缩放为 1
     scale.value = Math.min(1, newScale);
 };
@@ -531,31 +531,31 @@ onBeforeUnmount(() => {
 <template>
     <div class="custom-bg min-h-screen h-screen bg-no-repeat bg-cover bg-center relative flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-black/20 backdrop-blur-sm"></div>
-        
+
         <!-- TV Set Container -->
         <div ref="tvContainer" class="relative w-full max-w-6xl mx-auto px-8 tv-container"
              :style="{ transform: `scale(${scale})` }">
             <!-- TV Frame -->
-            <div class="tv-frame rounded-[2.5rem] shadow-2xl p-8 
+            <div class="tv-frame rounded-[2.5rem] shadow-2xl p-8
                         transform transition-all duration-300 retro-tv-frame">
                 <!-- TV Screen -->
                 <div class="tv-screen bg-black rounded-2xl overflow-hidden relative border-4 border-gray-700">
                     <div id="aipan-video-container" class="relative w-full aspect-video">
                         <video ref="videoPlayer" id="aipan-video" class="video-js w-full h-full"></video>
-                        
+
                         <!-- Screen Overlays -->
-                        <div v-if="!videoPlayStatus" 
-                             class="absolute inset-0 video-mask flex flex-col items-center justify-center 
+                        <div v-if="!videoPlayStatus"
+                             class="absolute inset-0 video-mask flex flex-col items-center justify-center
                                     bg-black/80 backdrop-blur-sm">
                             <div class="text-2xl text-gray-400 tracking-wider font-light">
                                 <i class="fas fa-arrow-down text-red-500 animate-bounce mb-4 block text-center"></i>
                                 点击下方电源键开始
                             </div>
                         </div>
-                        
-                        <div v-if="videoLoading" 
+
+                        <div v-if="videoLoading"
                              class="absolute inset-0 flex items-center justify-center bg-black/50 bg-[url('@/assets/tvstatic.gif')] backdrop-blur-sm">
-    
+
                         </div>
                     </div>
                 </div>
@@ -564,9 +564,9 @@ onBeforeUnmount(() => {
                 <div class="tv-control-panel mt-6 px-4">
                     <!-- Brand Name -->
                     <div class="flex justify-center mb-4">
-                        <nuxt-link to="/" 
-                                  class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500 
-                                         bg-clip-text text-transparent hover:from-blue-500 hover:to-purple-600 
+                        <nuxt-link to="/"
+                                  class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500
+                                         bg-clip-text text-transparent hover:from-blue-500 hover:to-purple-600
                                          transition-all duration-300
                                         transform hover:scale-105">
                             AIPAN
@@ -594,9 +594,9 @@ onBeforeUnmount(() => {
                                 </span>
                             </button>
                         </div>
-                        
+
                         <div class="tv-decoration flex items-center justify-center my-2 md:my-0">
-                            <button class="control-power-btn" 
+                            <button class="control-power-btn"
                                     :class="{'power-on': videoPlayStatus}"
                                     @click="handlePowerSwitch">
                                 <span class="relative z-10">
@@ -607,7 +607,7 @@ onBeforeUnmount(() => {
                                 </div>
                             </button>
                         </div>
-                        
+
                         <div class="tv-right-controls flex flex-wrap justify-center md:justify-end gap-2 md:gap-3 w-full md:w-auto">
                             <button class="control-btn" @click="handleSwitchVideoTheme">
                                 <span class="flex items-center gap-2">
@@ -633,18 +633,18 @@ onBeforeUnmount(() => {
             </div>
 
             <!-- TV Stand -->
-            <div class="tv-stand mt-4 h-16 w-1/3 mx-auto bg-gradient-to-b from-gray-700 to-gray-800 
+            <div class="tv-stand mt-4 h-16 w-1/3 mx-auto bg-gradient-to-b from-gray-700 to-gray-800
                         rounded-t-lg transform perspective-1000 rotateX-45"></div>
         </div>
 
         <!-- Channel Selection Panel -->
         <div v-if="modalShow" class="fixed inset-0 bg-black/40 backdrop-blur-md z-50 flex items-center justify-center">
-            <div class="tv-channel-dialog w-[90%] max-w-6xl h-[90vh] bg-white/5 rounded-2xl 
+            <div class="tv-channel-dialog w-[90%] max-w-6xl h-[90vh] bg-white/5 rounded-2xl
                         flex overflow-hidden shadow-2xl border border-white/10">
                 <div class="tv-channel-sidebar">
                     <button class="tv-btn danger rounded-md p-2 w-full" @click="modalShow = false">关闭</button>
                     <div class="mt-4 space-y-2">
-                        <button v-for="category in channelCategoryData" 
+                        <button v-for="category in channelCategoryData"
                                 :key="category.id"
                                 class="tv-category-btn w-full"
                                 :class="channelCategory === category.id ? 'active' : ''"
@@ -665,8 +665,8 @@ onBeforeUnmount(() => {
                         <div v-if="channelCategory === 1" class="space-y-3">
                             <div class="channel-item"
                                 :class="{ 'active': item.url === videoSrc }"
-                                v-for="(item, index) in tvSources" 
-                                :key="index" 
+                                v-for="(item, index) in tvSources"
+                                :key="index"
                                 @click="handleSwitchSource(item.url)">
                                 <div class="flex items-center">
                                     <div class="channel-number">{{ index + 1 }}</div>
@@ -679,8 +679,8 @@ onBeforeUnmount(() => {
                             <div class="source-categories">
                                 <div class="source-category"
                                     :class="{ 'active': sourceIndex === index }"
-                                    v-for="(item, index) in sourcesAipan" 
-                                    :key="index" 
+                                    v-for="(item, index) in sourcesAipan"
+                                    :key="index"
                                     @click="sourceIndex = index">
                                     {{ item.label }}
                                 </div>
@@ -689,7 +689,7 @@ onBeforeUnmount(() => {
                             <div class="mt-6 space-y-3">
                                 <div class="channel-item"
                                     :class="{ 'active': item.url === videoSrc }"
-                                    v-for="(item, index) in sourcesAipan[sourceIndex]['sources']" 
+                                    v-for="(item, index) in sourcesAipan[sourceIndex]['sources']"
                                     :key="index"
                                     @click="handleSwitchSource(item.url)">
                                     <div class="flex items-center">
@@ -703,7 +703,7 @@ onBeforeUnmount(() => {
                             <div class="alist-nav">
                                 <button class="alist-nav-btn back"
                                     v-if="alistPath.length > 1 || (alistPath.length === 1 && alistPath[0] !== '')"
-                                    type="button" 
+                                    type="button"
                                     @click="handleBackAlist()">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
@@ -712,7 +712,7 @@ onBeforeUnmount(() => {
                                 </button>
 
                                 <button class="alist-nav-btn home"
-                                    type="button" 
+                                    type="button"
                                     @click="handleHomeAlist()">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -722,7 +722,7 @@ onBeforeUnmount(() => {
 
                                 <button class="alist-nav-btn settings"
                                     :class="{ 'active': alistSettingShow }"
-                                    type="button" 
+                                    type="button"
                                     @click="handleAlistSetting()">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
@@ -733,7 +733,7 @@ onBeforeUnmount(() => {
                             <div class="space-y-3" v-if="alistSettingShow">
                                 <div class="alist-item setting-item"
                                     :class="{ 'active': alistUrl === item.link }"
-                                    v-for="(item, index) in alistSettingData" 
+                                    v-for="(item, index) in alistSettingData"
                                     :key="index"
                                     @click="handleClickAlistUrl(item)">
                                     <div class="flex items-center space-x-3">
@@ -754,7 +754,7 @@ onBeforeUnmount(() => {
                                         'file-item': !item.is_dir,
                                         'active': !item.is_dir && alistCurrentPlayIndex === index
                                     }"
-                                    v-for="(item, index) in alistData?.content" 
+                                    v-for="(item, index) in alistData?.content"
                                     :key="index"
                                     @click="handleClickAlist(item, index)">
                                     <div class="flex items-center space-x-3">
@@ -795,14 +795,14 @@ onBeforeUnmount(() => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
         radial-gradient(circle at 30% 20%, rgba(60, 60, 60, 0.4) 0%, transparent 60%),
         radial-gradient(circle at 70% 60%, rgba(55, 55, 55, 0.4) 0%, transparent 60%);
     pointer-events: none;
 }
 
 .glass-effect {
-    @apply bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:bg-gray-700/50 
+    @apply bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:bg-gray-700/50
            px-4 py-2 rounded-lg text-gray-200 transition-all duration-300;
 }
 
@@ -816,7 +816,7 @@ onBeforeUnmount(() => {
     color: white;
     font-weight: bold;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 
+    box-shadow:
         0 0 30px rgba(231, 76, 60, 0.5),
         inset 0 0 20px rgba(0, 0, 0, 0.3),
         0 2px 0 rgba(255, 255, 255, 0.2);
@@ -850,7 +850,7 @@ onBeforeUnmount(() => {
 
 .tv-power-btn:hover {
     transform: scale(1.05);
-    box-shadow: 
+    box-shadow:
         0 0 40px rgba(231, 76, 60, 0.7),
         inset 0 0 20px rgba(0, 0, 0, 0.3),
         0 2px 0 rgba(255, 255, 255, 0.2);
@@ -858,7 +858,7 @@ onBeforeUnmount(() => {
 
 .tv-power-btn:active {
     transform: scale(0.95);
-    box-shadow: 
+    box-shadow:
         0 0 20px rgba(231, 76, 60, 0.3),
         inset 0 0 15px rgba(0, 0, 0, 0.4);
 }
@@ -887,7 +887,7 @@ onBeforeUnmount(() => {
 .tv-frame {
     background: linear-gradient(145deg, #232323, #1a1a1a);
     border: 12px solid #0f0f0f;
-    box-shadow: 
+    box-shadow:
         inset 0 0 50px rgba(0, 0, 0, 0.6),
         0 0 30px rgba(0, 0, 0, 0.5),
         0 0 0 2px #0a0a0a,
@@ -911,7 +911,7 @@ onBeforeUnmount(() => {
 /* TV Screen */
 .tv-screen {
     border: 8px solid #0a0a0a !important;
-    box-shadow: 
+    box-shadow:
         inset 0 0 30px rgba(0, 0, 0, 0.8),
         0 0 20px rgba(0, 0, 0, 0.4);
 }
@@ -938,7 +938,7 @@ onBeforeUnmount(() => {
     border-radius: 10px;
     padding: 15px;
     margin-top: 20px;
-    box-shadow: 
+    box-shadow:
         inset 0 2px 5px rgba(255, 255, 255, 0.1),
         inset 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -963,7 +963,7 @@ onBeforeUnmount(() => {
 /* Control Buttons */
 .control-btn {
     @apply px-3 md:px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200
-           bg-neutral-800/80 hover:bg-neutral-700/80 
+           bg-neutral-800/80 hover:bg-neutral-700/80
            text-neutral-300 hover:text-white
            border border-neutral-600/30 hover:border-neutral-500/30
            shadow-lg hover:shadow-xl
@@ -972,7 +972,7 @@ onBeforeUnmount(() => {
 }
 
 .control-btn.primary {
-    @apply bg-blue-600/90 hover:bg-blue-500/90 
+    @apply bg-blue-600/90 hover:bg-blue-500/90
            text-blue-100 hover:text-white
            border-blue-500/30 hover:border-blue-400/30;
 }
@@ -982,7 +982,7 @@ onBeforeUnmount(() => {
 }
 
 .tv-buttons-panel {
-    box-shadow: 
+    box-shadow:
         0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06),
         inset 0 2px 4px rgba(255, 255, 255, 0.05);
@@ -1062,12 +1062,12 @@ onBeforeUnmount(() => {
 
 /* Channel Panel Styling */
 .tv-channel-panel {
-    @apply fixed inset-0 bg-black/40 backdrop-blur-md z-50 
+    @apply fixed inset-0 bg-black/40 backdrop-blur-md z-50
            flex items-center justify-center;
 }
 
 .tv-channel-dialog {
-    @apply w-[90%] max-w-6xl h-[90vh] bg-white/5 rounded-2xl 
+    @apply w-[90%] max-w-6xl h-[90vh] bg-white/5 rounded-2xl
            flex overflow-hidden shadow-2xl
            border border-white/10;
     animation: modal-pop-in 0.3s ease-out;
@@ -1091,7 +1091,7 @@ onBeforeUnmount(() => {
 }
 
 .tv-category-btn {
-    @apply mb-3 p-3 text-sm font-medium rounded-xl transition-all 
+    @apply mb-3 p-3 text-sm font-medium rounded-xl transition-all
            flex flex-col items-center justify-center gap-2
            text-white/90 hover:text-white
            hover:bg-white/10 active:bg-white/15;
@@ -1101,7 +1101,7 @@ onBeforeUnmount(() => {
 
 .tv-category-btn.active {
     @apply bg-blue-500 text-white font-semibold;
-    box-shadow: 
+    box-shadow:
         0 0 20px rgba(0, 0, 0, 0.2),
         inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
@@ -1119,8 +1119,8 @@ onBeforeUnmount(() => {
 }
 
 .tv-input {
-    @apply flex-1 bg-white/10 text-white px-5 py-3 rounded-xl 
-           border border-white/10 
+    @apply flex-1 bg-white/10 text-white px-5 py-3 rounded-xl
+           border border-white/10
            focus:border-blue-400 focus:outline-none
            transition-all duration-200
            placeholder:text-gray-300;
@@ -1176,14 +1176,14 @@ onBeforeUnmount(() => {
 .channel-item:hover {
     @apply transform scale-105 -translate-y-0.5 bg-blue-500/20;
     border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(59, 130, 246, 0.2);
 }
 
 .channel-item.active {
     @apply bg-blue-500/30 border-blue-400/50;
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(59, 130, 246, 0.3);
 }
@@ -1197,14 +1197,14 @@ onBeforeUnmount(() => {
 
 .channel-item:hover {
     @apply transform scale-[1.02] -translate-y-0.5;
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(59, 130, 246, 0.2);
 }
 
 .channel-item.active {
     @apply bg-blue-500/20 border-blue-400/50;
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(59, 130, 246, 0.3);
 }
@@ -1219,7 +1219,7 @@ onBeforeUnmount(() => {
 }
 
 .channel-number {
-    @apply w-8 h-8 rounded-lg bg-white/10 
+    @apply w-8 h-8 rounded-lg bg-white/10
            flex items-center justify-center
            text-blue-300 font-bold text-sm mr-4;
 }
@@ -1264,7 +1264,7 @@ onBeforeUnmount(() => {
 
 .tv-channel-content::-webkit-scrollbar-thumb {
     @apply bg-white/20 rounded-full
-           hover:bg-white/30 
+           hover:bg-white/30
            transition-colors duration-200;
 }
 
@@ -1288,7 +1288,7 @@ onBeforeUnmount(() => {
 }
 
 .alist-item.folder-item:hover {
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(234, 179, 8, 0.2);
 }
@@ -1299,14 +1299,14 @@ onBeforeUnmount(() => {
 }
 
 .alist-item.file-item:hover {
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(59, 130, 246, 0.2);
 }
 
 .alist-item.file-item.active {
     @apply bg-blue-500/30 border-blue-400/50;
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(59, 130, 246, 0.3);
 }
@@ -1317,14 +1317,14 @@ onBeforeUnmount(() => {
 }
 
 .alist-item.setting-item:hover {
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(168, 85, 247, 0.2);
 }
 
 .alist-item.setting-item.active {
     @apply bg-purple-500/30 border-purple-400/50 text-white;
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(168, 85, 247, 0.3);
 }
@@ -1356,7 +1356,7 @@ onBeforeUnmount(() => {
 }
 
 .alist-nav-btn.back:hover {
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(107, 114, 128, 0.3);
 }
@@ -1367,7 +1367,7 @@ onBeforeUnmount(() => {
 }
 
 .alist-nav-btn.home:hover {
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(59, 130, 246, 0.3);
 }
@@ -1378,14 +1378,14 @@ onBeforeUnmount(() => {
 }
 
 .alist-nav-btn.settings:hover {
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(168, 85, 247, 0.3);
 }
 
 .alist-nav-btn.settings.active {
     @apply bg-purple-500/40 border-purple-400/50 text-white;
-    box-shadow: 
+    box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.2),
         0 0 15px rgba(168, 85, 247, 0.4);
 }
@@ -1400,7 +1400,7 @@ onBeforeUnmount(() => {
     color: white;
     font-weight: bold;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 
+    box-shadow:
         0 0 20px rgba(231, 76, 60, 0.5),
         inset 0 0 15px rgba(0, 0, 0, 0.3),
         0 2px 0 rgba(255, 255, 255, 0.2);
@@ -1408,7 +1408,7 @@ onBeforeUnmount(() => {
 
 .control-power-btn.power-on {
     background: radial-gradient(circle at center, #2ecc71, #27ae60);
-    box-shadow: 
+    box-shadow:
         0 0 20px rgba(46, 204, 113, 0.5),
         inset 0 0 15px rgba(0, 0, 0, 0.3),
         0 2px 0 rgba(255, 255, 255, 0.2);
@@ -1423,7 +1423,7 @@ onBeforeUnmount(() => {
 }
 
 .control-power-btn.power-on:hover {
-    box-shadow: 
+    box-shadow:
         0 0 30px rgba(46, 204, 113, 0.7),
         inset 0 0 15px rgba(0, 0, 0, 0.3),
         0 2px 0 rgba(255, 255, 255, 0.2);
