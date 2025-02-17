@@ -1,4 +1,4 @@
-# 爱盘-网盘资源搜索 Web
+# 快搜剧-网盘资源搜索 Web
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/unilei/aipan-netdisk-search.git&project-name=aipan-netdisk-search&repository-name=aipan-netdisk-search)
 
